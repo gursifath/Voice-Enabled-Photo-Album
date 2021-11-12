@@ -4,8 +4,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
 <link rel="stylesheet" href="styles.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+<!-- <style>
 body {
   margin: 0 auto;
   max-width: 840px;
@@ -20,62 +22,85 @@ body {
     top: 67.80px;
     bottom: 0px;
 }
-</style>
+</style> -->
 </head>
-<!-- <body style="color: white;"> -->
+<body style="color: rgb(128,128,128);  margin:0;">
 
- <header style="position: fixed;background-color:rgb(0,128,128);padding: 0 20px;width: 760px;font-family: 'Comic Sans MS', cursive, sans-serif; height: 50px;"><h2><center>Voice Enabled Photo Album</center></h2>
- </header>
-
-<div id="chatArea" style="background-color:rgb(0,128,128); width:800px; margin:0 auto;">
-    <form>
-        <label for="transcript" style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 25px;"><center>Please enter the keyword(s) below that you want to search for:</center></label>
-        <input type="text" id="transcript" name="transcript" size="100" style="width:760px;  margin:0 auto; display: block;"/>
-        <input type="button" id="submit" style="height:20px;width:80px; margin:0 auto; display: block;" value="submit" onclick="submitChat()"/>
+  <div class="text-warning" style="background-color:rgb(128,128,128); margin:0 auto;">
+    <center>
+    <div class="container">
+      <h1 class="display-4" style="font-family: 'Comic Sans MS', cursive, sans-serif;">Voice Enabled Photo Album</h1>
+      <p class="lead" style="font-family: 'Comic Sans MS', cursive, sans-serif; margin:0;">Please enter the keyword(s) below that you want to search for or record by clicking on the microphone button</p>
+    </div>
+  </center>
+  </div>
+<div class = "jumbotron jumbotron-fluid" style="background-color: rgb(128,128,128);  margin:0;">
+  <div class = "container" style="text-align: center;">
+    <form onsubmit="return false;">
+      <div class="input-group mb-1" style="text-align: center;">
+        <input type="search" id="transcript" placeholder="Search here" name="transcript" size="100" style="margin-left: auto; display: block; width:560px;"/>
+        <div class="input-group-append"></div>
+        <input type="submit" class = "btn btn-primary display:inline-block"id="submit" style="margin-right: auto; display: block;font-family: 'Comic Sans MS', cursive, sans-serif;" value="Search" onclick="submitChat()"/>
+        </div>
+        </div>
         <br>
+
+
+        <!-- <label for="transcript" style="font-family: 'Arial', cursive, sans-serif; font-size: 25px;"><center>Or speak your keywords by clicking on the microphone button:</center></label> -->
+
     </form>
-        <label for="transcript" style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 25px;"><center>Or speak your keywords by clicking on the microphone button:</center></label>
-        <center>
-        <div id="controls">
-          <button id="recordButton">Record</button>
-          <button id="stopButton" disabled>Stop</button>
-         </div>
-        
+    <center>
+      <div id="controls"> 
+
+        <button id="recordButton" class="btn btn-danger" style="font-family: 'Comic Sans MS', cursive, sans-serif; height: 50px;"><i class="bi bi-mic-fill">          
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16"> -->
+          <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+          <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+        </svg></i>Start Recording</button> 
+        <button id="stopButton" disabled class="btn btn-warning" style="font-family: 'Comic Sans MS', cursive, sans-serif; height: 50px;"><i class="bi bi-mic-mute"></i>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-mute" viewBox="0 0 16 16"> -->
+            <path d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879l-1-1V3a2 2 0 0 0-3.997-.118l-.845-.845A3.001 3.001 0 0 1 11 3z"/>
+            <path d="m9.486 10.607-.748-.748A2 2 0 0 1 6 8v-.878l-1-1V8a3 3 0 0 0 4.486 2.607zm-7.84-9.253 12 12 .708-.708-12-12-.708.708z"/>
+          </svg>Stop Recording
+     </button>
+       </div>
+      </center>
+    <div class="container" id="img_area">
+      
+    </div> 
         <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1023.0.min.js"></script>
          <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
          <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
          <script src="audio_webspeech.js"></script>
         <!-- <label for="img">Select image:</label>
         <input type="file" id="img_uploaded" name="img_uploaded" accept="image/*" onchange="handleFileSelect()"> -->
+    <div class = "container rounded text-warning" style="text-align: center;font-family: 'Comic Sans MS', cursive, sans-serif; height: 50px;">
+        <h1>Upload your images</h1>
+        <!-- <label for="imageupload" style=" font-family: 'Comic Sans MS', cursive, sans-serif;color:darkblue"><center>Choose an image file to upload:</center></label> -->
 
-        <label for="imageupload" style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 25px;">Choose an image file to upload:</label>
-
-        <div>
+  
           <script src = "./sdk/search_upload.js"></script>
-            <!-- <input type="file"
-               id="image_upload" name="image to upload"
-               accept="image/png, image/jpeg">
-                -->
+
             <form action='#' onsubmit="return false;" id="uploadbanner" entctype="multipart/form-data" method="post">
-                <input id="fileupload" name="myfile" type="file" accept="image/*"/>
-                <input id = "imagetags" name = "tags" type = "text" size="100" style="width:560px;  margin:0 auto; display: block;"/>
-                <input type="submit" value="submit" id="submit" onclick= "handleFileSelect()"/>
+                <input id="fileupload" class ="btn btn-secondary" name="myfile" type="file" accept="image/*"/>
+                <br>
+                <br>
+                <div>
+                  <!-- <h5>Add custom labels here</h5> -->
+                  <input id = "imagetags" placeholder = "Add custom labels here" name = "tags" type = "text" size="100" style="width:560px; margin:0 auto; display: block;"/>
+                  <div class="input-group-append"></div>
+                  <input type="submit" class ="btn btn-primary" value="Submit" id="submit" onclick= "handleFileSelect()"/>
+                </div>
             </form>
             <br>
             <br>
-           
-            <div id="image_display">
-                <!-- <img src="https://s3.amazonaws.com/photoalbumcc/photo-1542841791-3f32162641bc.jpg" alt="Trulli"> -->
-            </div>
-        </center>
-        </div>
         
+    
+      </div>
 
     </form>
     <br>
-    <div id="img_area">
-      
-    </div> 
+
 </div>
 <script id="imgTest" type="text/javascript" src="./sdk/lib/axios/dist/axios.standalone.js"></script>
 <script type="text/javascript" src="./sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
@@ -90,6 +115,11 @@ body {
 <script type="text/javascript" src="./sdk/apigClient.js"></script>
 <script src="./sdk/aws-sdk.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!---Optional JS-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 
