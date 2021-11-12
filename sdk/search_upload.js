@@ -92,6 +92,7 @@ var imageTags = document.getElementById("imagetags").value;
     apigClient.folderObjectPut(params, body,{})
     .then(function(result){
     console.log('went to then')
+    alert("Succesfully uploaded!");
     }).catch( function(result){
     console.log('went to catch')
     });
