@@ -27,6 +27,7 @@ function submitChat(e) {
         var num_images = images.length;
         if (num_images > 0){
           img_area = document.getElementById('img_area');
+          img_area.innerHTML = "";
           
           for (let i = 0; i < num_images; i++){
             var img = document.createElement("IMG");
@@ -42,7 +43,9 @@ function submitChat(e) {
         }
         else{
             img_area = document.getElementById('img_area')
+            img_area.innerHTML = "";
             img_area.innerHTML += 'No Photos'
+            alert("Oops, the requested photo(s) could not be found!");
           }
         });
   
