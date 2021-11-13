@@ -17,7 +17,7 @@ function submitChat(e) {
     // };
     // var body = JSON.stringify({"q":search_query})
     var body = []
-    var apigClient = apigClientFactory.newClient();
+    var apigClient = apigClientFactory.newClient({apiKey:'t6B0z5hnk54I71Y1I1T03AdYfYEUv032FEk9Isrg'});
       apigClient.searchGet(params,body)
       .then(function(result){
         var data =  result['data'];
@@ -90,7 +90,7 @@ var imageTags = document.getElementById("imagetags").value;
       
       };
 
-    var apigClient = apigClientFactory.newClient();
+    var apigClient = apigClientFactory.newClient({apiKey:'t6B0z5hnk54I71Y1I1T03AdYfYEUv032FEk9Isrg'});
     console.log(apigClient)
     apigClient.folderObjectPut(params, body,{})
     .then(function(result){
